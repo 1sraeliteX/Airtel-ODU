@@ -1,0 +1,23 @@
+{
+  "name": "airtel-odu",
+  "version": "1.0.0",
+  "description": "Airtel SmartConnect 5G ODU landing page with Vercel Web Analytics",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1sraeliteX/Airtel-ODU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1sraeliteX/Airtel-ODU/issues"
+  },
+  "homepage": "https://github.com/1sraeliteX/Airtel-ODU#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
