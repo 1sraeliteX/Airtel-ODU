@@ -1,20 +1,13 @@
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+// Mobile Menu Toggle - DISABLED
+// Hamburger menu and mobile menu have been removed
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-  hamburger.classList.toggle('active');
-});
-
-// Close mobile menu when a link is clicked
-const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    hamburger.classList.remove('active');
+// Register Button functionality
+const registerBtn = document.querySelector('.btn-register');
+if (registerBtn) {
+  registerBtn.addEventListener('click', () => {
+    window.open('https://wa.me/2347018080377?text=Hi! I am interested in registering for the Airtel SmartConnect 5G ODU package. Can you provide more details?', '_blank');
   });
-});
+}
 
 // Like Button Functionality
 const likeBtn = document.querySelector('.like-btn');
