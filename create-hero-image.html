@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Hero Image</title>
+</head>
+<body>
+  <canvas id="canvas" width="1200" height="600"></canvas>
+  <br>
+  <button onclick="downloadImage()">Download as hero-airtel.jpg</button>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Background with gradient
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, '#e8e8e8');
+    gradient.addColorStop(1, '#f5f5f5');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw product box on left (simplified)
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(80, 150, 180, 300);
+    ctx.fillStyle = '#dc2626';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('5G', 170, 240);
+    ctx.font = '14px Arial';
+    ctx.fillText('OUTDOOR', 170, 310);
+
+    // Draw router box on right
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(900, 200, 120, 200);
+    ctx.fillStyle = '#999';
+    ctx.font = 'bold 16px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Router', 960, 280);
+
+    // Draw connecting cable wave
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(260, 300);
+    for (let i = 260; i < 900; i += 20) {
+      ctx.lineTo(i, 300 + (Math.sin((i - 260) / 50) * 20));
+    }
+    ctx.stroke();
+
+    // Main 5G Badge (large in center)
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath();
+    ctx.arc(600, 150, 80, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 90px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('5G', 600, 150);
+
+    // SmartConnect text
+    ctx.fillStyle = '#dc2626';
+    ctx.font = 'bold 70px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('smart connect', 600, 280);
+
+    // Home & Office WiFi
+    ctx.fillStyle = '#dc2626';
+    ctx.font = 'bold 36px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Home & Office WiFi', 600, 350);
+
+    // Price badge (rounded rectangle)
+    ctx.fillStyle = '#dc2626';
+    const badgeX = 350;
+    const badgeY = 420;
+    const badgeW = 500;
+    const badgeH = 80;
+    const badgeRadius = 40;
+    
+    ctx.beginPath();
+    ctx.moveTo(badgeX + badgeRadius, badgeY);
+    ctx.lineTo(badgeX + badgeW - badgeRadius, badgeY);
+    ctx.quadraticCurveTo(badgeX + badgeW, badgeY, badgeX + badgeW, badgeY + badgeRadius);
+    ctx.lineTo(badgeX + badgeW, badgeY + badgeH - badgeRadius);
+    ctx.quadraticCurveTo(badgeX + badgeW, badgeY + badgeH, badgeX + badgeW - badgeRadius, badgeY + badgeH);
+    ctx.lineTo(badgeX + badgeRadius, badgeY + badgeH);
+    ctx.quadraticCurveTo(badgeX, badgeY + badgeH, badgeX, badgeY + badgeH - badgeRadius);
+    ctx.lineTo(badgeX, badgeY + badgeRadius);
+    ctx.quadraticCurveTo(badgeX, badgeY, badgeX + badgeRadius, badgeY);
+    ctx.fill();
+
+    // Price text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 28px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('₦25,000', 380, 455);
+
+    ctx.font = 'bold 16px Arial';
+    ctx.fillText('Unlimited Data', 380, 485);
+    ctx.fillText('Valid for 30 days', 380, 510);
+
+    // Airtel logo text
+    ctx.fillStyle = '#dc2626';
+    ctx.font = 'bold 32px Arial';
+    ctx.textAlign = 'right';
+    ctx.fillText('airtel', canvas.width - 60, 60);
+
+    function downloadImage() {
+      canvas.toBlob(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'hero-airtel.jpg';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }, 'image/jpeg', 0.95);
+    }
+  </script>
+</body>
+</html>
