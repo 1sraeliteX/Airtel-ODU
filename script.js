@@ -16,17 +16,21 @@ let isLiked = false;
 likeBtn.addEventListener('click', () => {
   isLiked = !isLiked;
   const icon = likeBtn.querySelector('i');
+  const countSpan = likeBtn.querySelector('span');
+  let currentCount = parseInt(countSpan.textContent);
   
   if (isLiked) {
     icon.classList.remove('far');
     icon.classList.add('fas');
     likeBtn.style.borderColor = '#dc2626';
     likeBtn.style.color = '#dc2626';
+    countSpan.textContent = currentCount + 1;
   } else {
     icon.classList.remove('fas');
     icon.classList.add('far');
     likeBtn.style.borderColor = 'var(--border)';
     likeBtn.style.color = 'var(--text-primary)';
+    countSpan.textContent = currentCount - 1;
   }
 });
 
